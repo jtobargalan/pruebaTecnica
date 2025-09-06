@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
   StyleSheet,
 } from "react-native";
+import { ELEMENTS_API_URL, DEFAULT_AVATAR_URL } from "../config";
 
 type ElementItem = { id: string; name: string; avatar?: string };
 
@@ -21,7 +22,7 @@ export default function ListScreen() {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          "https://6172cfe5110a740017222e2b.mockapi.io/elements"
+          ELEMENTS_API_URL
         );
 
         if (!res.ok) {
@@ -74,7 +75,7 @@ export default function ListScreen() {
           {item.avatar && (
             //Dejo esta parte asi porque los enlaces de las imagenes no estan funcionales
             // <Image source={{ uri: item.avatar }} style={styles.avatar} />
-            <Image source={{ uri: "https://cdn-icons-png.flaticon.com/512/4792/4792929.png" }} style={styles.avatar} />
+            <Image source={{ uri: DEFAULT_AVATAR_URL }} style={styles.avatar} />
           )}
           <Text style={styles.name}>{item.name}</Text>
         </View>
